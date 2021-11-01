@@ -2,116 +2,33 @@
 
 // Arrays of letters, numbers and special characters
 var lowercaseCharacter = [
-    "a", 
-    "b", 
-    "c", 
-    "d", 
-    "e", 
-    "f", 
-    "g", 
-    "h", 
-    "i", 
-    "j", 
-    "k", 
-    "l", 
-    "m", 
-    "n", 
-    "o", 
-    "p", 
-    "q", 
-    "r", 
-    "s", 
-    "t", 
-    "u", 
-    "v", 
-    "w", 
-    "x", 
-    "y", 
-    "z"
+    "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
 ];
 var uppercaseCharacter = [
-    "A", 
-    "B", 
-    "C", 
-    "D", 
-    "E", 
-    "F", 
-    "G", 
-    "H", 
-    "I", 
-    "J", 
-    "K", 
-    "L", 
-    "M", 
-    "N", 
-    "O", 
-    "P", 
-    "Q", 
-    "R", 
-    "S", 
-    "T", 
-    "U", 
-    "V", 
-    "W", 
-    "X", 
-    "Y", 
-    "Z"
+    "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
 ];
 var numericCharacter = [
-    "1", 
-    "2", 
-    "3", 
-    "4", 
-    "5", 
-    "6", 
-    "7", 
-    "8", 
-    "9", 
-    "0"
+    "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"
 ];
 var specialCharacter = [
-    " ", 
-    "!", 
-    "#", 
-    "$", 
-    "%", 
-    "&", 
-    "'", 
-    "(", 
-    ")", 
-    "*", 
-    "+", 
-    ",", 
-    "-", 
-    ".", 
-    "/", 
-    ":", 
-    ";", 
-    "<", 
-    "=", 
-    ">", 
-    "?", 
-    "@", 
-    "[", 
-    "]", 
-    "^", 
-    "_", 
-    "`", 
-    "{", 
-    "|", 
-    "}", 
-    "~"
+    "!", "#", "$", "%", "&", "-", "?", "@", "_", 
 ];
 var arrayList = [];
 
 var generatePassword = function() {
 
+    // declaring variables
+    var passwordLengthRequest;
+    var characterUppercaseRequest;
+    var characterLowercaseRequest;
+    var characterNumericRequest;
+    var characterSpecialRequest;
+
     // password length
     var passwordLength = function() {
-        var passwordLengthRequest = window.prompt("How many characters long would you like your password to be?");
+        passwordLengthRequest = window.prompt("How many characters long would you like your password to be?");
         if (passwordLengthRequest < 8 || passwordLengthRequest > 128) {
             window.alert("Please enter an integer of at least 8 and no more than 128")
-            localStorage.removeItem("passwordLengthRequest");
             passwordLength();
         }
         else if (passwordLengthRequest > 8 && passwordLengthRequest < 128) {
@@ -127,16 +44,16 @@ var generatePassword = function() {
 
     // character types
     var characterUppercase = function() {
-        var characterUppercaseRequest = window.prompt('Would you like to include uppercase characters? Please enter "YES" or "NO"');
-        if (characterUppercaseRequest === "YES" || characterUppercaseRequest === "yes") {
+        characterUppercaseRequest = window.prompt('Would you like to include uppercase characters? Please enter "YES" or "NO"');
+        if (characterUppercaseRequest === "YES" || characterUppercaseRequest === "yes" || characterUppercaseRequest === "Yes") {
+            arrayList = arrayList.concat(uppercaseCharacter);
             window.alert("Uppercase characters will be included");
         }
-        else if (characterUppercaseRequest === "NO" || characterUppercaseRequest === "no") {
+        else if (characterUppercaseRequest === "NO" || characterUppercaseRequest === "no" || characterUppercaseRequest === "No") {
             window.alert("Uppercase characters will not be included");
         }
         else {
             window.alert("Please enter a valid response");
-            localStorage.removeItem("characterUppercaseRequest");
             characterUppercase();
         };
         return;
@@ -144,16 +61,16 @@ var generatePassword = function() {
     characterUppercase();
 
     var characterLowercase = function() {
-        var characterLowercaseRequest = window.prompt('Would you like to include lowercase characters? Please enter "YES" or "NO"');
-        if (characterLowercaseRequest === "YES" || characterLowercaseRequest === "yes") {
+        characterLowercaseRequest = window.prompt('Would you like to include lowercase characters? Please enter "YES" or "NO"');
+        if (characterLowercaseRequest === "YES" || characterLowercaseRequest === "yes" || characterLowercaseRequest === "Yes") {
+            arrayList = arrayList.concat(lowercaseCharacter);
             window.alert("Lowercase characters will be included");
         }
-        else if (characterLowercaseRequest === "NO" || characterLowercaseRequest === "no") {
+        else if (characterLowercaseRequest === "NO" || characterLowercaseRequest === "no" || characterLowercaseRequest === "No") {
             window.alert("Lowercase characters will not be included");
         }
         else {
             window.alert("Please enter a valid response");
-            localStorage.removeItem("characterLowercaseRequest");
             characterLowercase();
         };
         return;
@@ -161,16 +78,16 @@ var generatePassword = function() {
     characterLowercase();
 
     var characterNumeric = function() {
-        var characterNumericRequest = window.prompt('Would you like to include numbers? Please enter "YES" or "NO"');
-        if (characterNumericRequest === "YES" || characterNumericRequest === "yes") {
+        characterNumericRequest = window.prompt('Would you like to include numbers? Please enter "YES" or "NO"');
+        if (characterNumericRequest === "YES" || characterNumericRequest === "yes" || characterNumericRequest === "Yes") {
+            arrayList = arrayList.concat(numericCharacter);
             window.alert("Numbers will be included");
         }
-        else if (characterNumericRequest === "NO" || characterNumericRequest === "no") {
+        else if (characterNumericRequest === "NO" || characterNumericRequest === "no" || characterNumericRequest === "No") {
             window.alert("Numbers will not be included");
         }
         else {
             window.alert("Please enter a valid response");
-            localStorage.removeItem("characterNumericRequest");
             characterNumeric();
         };
         return;
@@ -178,61 +95,42 @@ var generatePassword = function() {
     characterNumeric();
 
     var characterSpecial = function() {
-        var characterSpecialRequest = window.prompt('Would you like to include special characters? Please enter "YES" or "NO"');
-        if (characterSpecialRequest === "YES" || characterSpecialRequest === "yes") {
+        characterSpecialRequest = window.prompt('Would you like to include special characters? Please enter "YES" or "NO"');
+        if (characterSpecialRequest === "YES" || characterSpecialRequest === "yes" || characterSpecialRequest === "Yes") {
+            arrayList = arrayList.concat(specialCharacter);
             window.alert("Special characters will be included");
         }
-        else if (characterSpecialRequest === "NO" || characterSpecialRequest === "no") {
+        else if (characterSpecialRequest === "NO" || characterSpecialRequest === "no" || characterSpecialRequest === "No") {
             window.alert("Special characters will not be included");
         }
         else {
             window.alert("Please enter a valid response");
-            localStorage.removeItem("characterSpecialRequest");
             characterSpecial();
         };
         return;
     }
     characterSpecial();
 
-    // consolidating a list of all approved arrays
-    if (characterUppercaseRequest) {
-        arrayList = arrayList.concat(uppercaseCharacter);
-    };
-    if (characterLowercaseRequest) {
-        arrayList = arrayList.concat(lowercaseCharacter);
-    };
-    if (characterNumericRequest) {
-        arrayList = arrayList.concat(numericCharacter);
-    };
-    if (characterSpecialRequest) {
-        arrayList = arrayList.concat(specialCharacter);
-    };
 
     // pick a random character from the array *Length* times and apply it to a final array
-    // Thanks go to Ben Aubin (https://stackoverflow.com/a/33906108/16940312)
+    // Thanks to Ben Aubin (https://stackoverflow.com/a/33906108/16940312)
     Array.prototype.sample = function(){
         return this[Math.floor(Math.random()*this.length)];
     };
 
     var finalCharacters = [];
+
     for (var i = 0; i < passwordLengthRequest; i++) {
         finalCharacters[i] = arrayList.sample();
     };
 
     // transforms array into a string without commas
+    // Thanks to Ritika (https://thispointer.com/convert-array-to-string-without-comma-in-javascript/)
     let finalString = finalCharacters.join("");
 
     return (finalString);
+
 }
-
-
-    
-    
-
-
-
-
-
 
 
 // Get references to the #generate element
