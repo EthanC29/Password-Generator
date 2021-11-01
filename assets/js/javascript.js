@@ -205,10 +205,22 @@ if (generateBtn) {
             var arrayList = arrayList.concat(specialCharacter);
         }
 
+        // pick a random character from the array *Length* times
+        Array.prototype.sample = function(){
+            return this[Math.floor(Math.random()*this.length)];
+        }
 
+        var finalCharacters = [];
+        for (var i = 0; i < passwordLengthRequest.length; i++) {
+            finalCharacters[i] = arrayList.sample();
+        }
 
     }
 
+
+    generatePassword();
+
+    console.log(finalCharacters);
 }
     
 
