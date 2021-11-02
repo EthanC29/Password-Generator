@@ -13,8 +13,9 @@ var numericCharacter = [
 var specialCharacter = [
     "!", "#", "$", "%", "&", "-", "?", "@", "_", 
 ];
-var arrayList = [];
+var arrayList;
 
+// function that generates the password
 var generatePassword = function() {
 
     // declaring variables
@@ -42,7 +43,8 @@ var generatePassword = function() {
     }
     passwordLength();
 
-    // character types
+    // choosing character types and joining the applicable arrays together into a single array
+    // uppercase letters
     var characterUppercase = function() {
         characterUppercaseRequest = window.prompt('Would you like to include uppercase characters? Please enter "YES" or "NO"');
         if (characterUppercaseRequest === "YES" || characterUppercaseRequest === "yes" || characterUppercaseRequest === "Yes") {
@@ -50,7 +52,7 @@ var generatePassword = function() {
             window.alert("Uppercase characters will be included");
         }
         else if (characterUppercaseRequest === "NO" || characterUppercaseRequest === "no" || characterUppercaseRequest === "No") {
-            window.alert("Uppercase characters will not be included");
+            window.alert("Uppercase characters will NOT be included");
         }
         else {
             window.alert("Please enter a valid response");
@@ -60,6 +62,7 @@ var generatePassword = function() {
     }
     characterUppercase();
 
+    // lowercase letters
     var characterLowercase = function() {
         characterLowercaseRequest = window.prompt('Would you like to include lowercase characters? Please enter "YES" or "NO"');
         if (characterLowercaseRequest === "YES" || characterLowercaseRequest === "yes" || characterLowercaseRequest === "Yes") {
@@ -67,7 +70,7 @@ var generatePassword = function() {
             window.alert("Lowercase characters will be included");
         }
         else if (characterLowercaseRequest === "NO" || characterLowercaseRequest === "no" || characterLowercaseRequest === "No") {
-            window.alert("Lowercase characters will not be included");
+            window.alert("Lowercase characters will NOT be included");
         }
         else {
             window.alert("Please enter a valid response");
@@ -77,6 +80,7 @@ var generatePassword = function() {
     }
     characterLowercase();
 
+    // numbers
     var characterNumeric = function() {
         characterNumericRequest = window.prompt('Would you like to include numbers? Please enter "YES" or "NO"');
         if (characterNumericRequest === "YES" || characterNumericRequest === "yes" || characterNumericRequest === "Yes") {
@@ -84,7 +88,7 @@ var generatePassword = function() {
             window.alert("Numbers will be included");
         }
         else if (characterNumericRequest === "NO" || characterNumericRequest === "no" || characterNumericRequest === "No") {
-            window.alert("Numbers will not be included");
+            window.alert("Numbers will NOT be included");
         }
         else {
             window.alert("Please enter a valid response");
@@ -94,6 +98,7 @@ var generatePassword = function() {
     }
     characterNumeric();
 
+    // special characters
     var characterSpecial = function() {
         characterSpecialRequest = window.prompt('Would you like to include special characters? Please enter "YES" or "NO"');
         if (characterSpecialRequest === "YES" || characterSpecialRequest === "yes" || characterSpecialRequest === "Yes") {
@@ -101,7 +106,7 @@ var generatePassword = function() {
             window.alert("Special characters will be included");
         }
         else if (characterSpecialRequest === "NO" || characterSpecialRequest === "no" || characterSpecialRequest === "No") {
-            window.alert("Special characters will not be included");
+            window.alert("Special characters will NOT be included");
         }
         else {
             window.alert("Please enter a valid response");
@@ -112,24 +117,25 @@ var generatePassword = function() {
     characterSpecial();
 
 
-    // pick a random character from the array *Length* times and apply it to a final array
+    // pick a random character from the array x times, where x is the length of the password, and apply it to the joined array
     // Thanks to Ben Aubin (https://stackoverflow.com/a/33906108/16940312)
     Array.prototype.sample = function(){
         return this[Math.floor(Math.random()*this.length)];
     };
 
-    var finalCharacters = [];
+    var finalArray;
 
     for (var i = 0; i < passwordLengthRequest; i++) {
-        finalCharacters[i] = arrayList.sample();
+        finalArray[i] = arrayList.sample();
     };
 
     // transforms array into a string without commas
     // Thanks to Ritika (https://thispointer.com/convert-array-to-string-without-comma-in-javascript/)
-    let finalString = finalCharacters.join("");
+    let passwordString = finalArray.join("");
 
-    return (finalString);
 
+    // return final series of letters/numbers/characters
+    return (passwordString);
 }
 
 
@@ -147,4 +153,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
